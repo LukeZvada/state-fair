@@ -34,12 +34,36 @@ eventHub.addEventListener("click", (gameClick) => {
     }
 })
 
+eventHub.addEventListener("click", (sideshowClick) => { 
+    if (sideshowClick.target.id === "sideshowTicket") {
+    const sideshowEvent = new CustomEvent("sideshowTicketPurchased", {
+        // detail: {
+        //     event: changeEvent.target.value
+        // }
+        })
+        eventHub.dispatchEvent(sideshowEvent)
+    }
+})
+
+eventHub.addEventListener("click", (allEventClick) => { 
+    if (allEventClick.target.id === "allEventTicket") {
+    const fullPackageEvent = new CustomEvent("fullPackageTicketPurchased", {
+        // detail: {
+        //     event: changeEvent.target.value
+        // }
+        })
+        eventHub.dispatchEvent(fullPackageEvent)
+    }
+})
+
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
             <button id="rideTicket">Ride Ticket</button>
             <button id="foodTicket">Food Ticket</button> 
             <button id="gameTicket">Game Ticket</button>
+            <button id="sideshowTicket">Sideshow Ticket</button> 
+            <button id="allEventTicket">Full Package Ticket</div> 
         </div>
     `
 }
