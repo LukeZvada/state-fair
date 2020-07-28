@@ -23,11 +23,23 @@ eventHub.addEventListener("click", (foodClick) => {
     }
 })
 
+eventHub.addEventListener("click", (gameClick) => { 
+    if (gameClick.target.id === "gameTicket") {
+    const gameEvent = new CustomEvent("gameTicketPurchased", {
+        // detail: {
+        //     event: changeEvent.target.value
+        // }
+        })
+        eventHub.dispatchEvent(gameEvent)
+    }
+})
+
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
             <button id="rideTicket">Ride Ticket</button>
             <button id="foodTicket">Food Ticket</button> 
+            <button id="gameTicket">Game Ticket</button>
         </div>
     `
 }
